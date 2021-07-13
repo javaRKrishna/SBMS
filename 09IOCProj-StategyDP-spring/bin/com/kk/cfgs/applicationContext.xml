@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--cfg Dependent class -->
+	<bean id="dtdc" class="com.kk.comp.DTDC"/>
+	<bean id="bDart" class="com.kk.comp.BlueDart"/>
+	
+	<!-- cfg Target class -->
+	<bean id="fpkt" class="com.kk.comp.Flipkart">
+		<property name="courier" ref="bDart"/>
+		</bean>
+</beans>
