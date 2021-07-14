@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- DataSource cfg -->
+	<!-- <bean id="oradmds" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/> <property 
+		name="username" value="system"/> <property name="password" value="manager"/> 
+		</bean> -->
+
+	<!-- DataSource cfg -->
+	<bean id="dmds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.pwd}" />
+	</bean>
+
+	<!-- Component scanning -->
+	<context:component-scan base-package="com.kk" />
+
+	<!-- configuring properties file -->
+	<context:property-placeholder
+		location="com/kk/commons/jdbc.properties " />
+
+	<!-- setting alias name -->
+	<alias name="${dao}" alias="dao"/>
+
+</beans>
