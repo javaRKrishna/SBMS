@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="robot" class="com.kk.beans.Robot">
+		<!-- <property name="id" value="1011"/> -->
+		<property name="name" value="Krishna" />
+		<!-- <property name="lab" value="DRDO"/> -->
+		<property name="price" value="101184.00124" />
+	</bean>
+
+	<bean class="com.kk.beans.Robot">
+		<property name="id" value="1011" />
+		<property name="name" value="Krishna Rathore" />
+		<property name="lab" value="DRDO1" />
+		<property name="price" value="101184.00124" />
+	</bean>
+
+	<bean class="com.kk.beans.Robot">
+		<property name="id" value="1011" />
+		<property name="name" value="Rathore" />
+		<property name="lab" value="DRDO2" />
+		<property name="price" value="101184.00124" />
+	</bean>
+
+	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
+
+	<context:annotation-config />
+</beans>

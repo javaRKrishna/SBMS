@@ -11,7 +11,22 @@ import com.kk.bo.CustomerBO;
 public class CustomerMySqlDAOImpl implements ICustomerDAO {
 	private static final String REALTIME_CUSTOMER_INSERT_QUERY="INSERT INTO REALTIMEDI_CUSTOMER(CUSTNAME,CUSTADDRS,PAMT,RATE,TIME,INTERESTAMOUNT) VALUES(?,?,?,?,?,?)";
 	private DataSource ds;
+	private String osname;
+	private String username;
+	private String pathdata;
 	
+	public void setOsname(String osname) {
+		this.osname = osname;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPathdata(String pathdata) {
+		this.pathdata = pathdata;
+	}
+
 	public CustomerMySqlDAOImpl(DataSource ds) {
 		System.out.println("CustomerMySqlDAOImpl::1 patam cons");
 		this.ds = ds;
@@ -19,7 +34,7 @@ public class CustomerMySqlDAOImpl implements ICustomerDAO {
 
 	@Override
 	public int insert(CustomerBO bo) throws Exception {
-		
+		System.out.println(osname+"  "+username+"    "+pathdata  );
 		int count=0;
 		try(Connection con=ds.getConnection();
 				PreparedStatement ps=con.prepareStatement(REALTIME_CUSTOMER_INSERT_QUERY)) {

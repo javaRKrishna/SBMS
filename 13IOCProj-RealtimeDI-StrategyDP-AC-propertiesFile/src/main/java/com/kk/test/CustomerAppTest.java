@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.Environment;
 
 import com.kk.controller.MainController;
 import com.kk.vo.CustomerVO;
@@ -32,9 +33,8 @@ public class CustomerAppTest {
 		vo.setRate(rate);
 		vo.setTime(time);
 		//create IOC Container
-		 //create IOC Container
 		ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("com/kk/cfgs/applicationContext.xml");
-		//get Controller class obj
+	//get Controller class obj
 		MainController controller=ctx.getBean("controller",MainController.class);
 		//invoke the methods
 		try {
@@ -45,5 +45,9 @@ public class CustomerAppTest {
 			e.printStackTrace();
 			System.out.println("Internal Problem-- Try Agin");
 		}
+		Environment env=ctx.getEnvironment();
+		System.out.println(env.getClass()+"   "+env.getRequiredProperty("os.name"));
+		//close container
+		ctx.close();
 	}
 }

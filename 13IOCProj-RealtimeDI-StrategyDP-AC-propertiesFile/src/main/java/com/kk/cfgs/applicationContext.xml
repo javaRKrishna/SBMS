@@ -5,42 +5,49 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-<!-- DataSource cfg -->
-	<bean id="oradmds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${jdbc.oraDriver}"/>
-		<property name="url" value="${jdbc.oraUrl}"/>
-		<property name="username" value="${jdbc.oraUser}"/>
-		<property name="password" value="${jdbc.oraPwd}"/>
-	</bean>
-	
+
 	<!-- DataSource cfg -->
-	<bean id="mysqldmds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${jdbc.mySqlDriver}"/>
-		<property name="url" value="${jdbc.mySqlUrl}"/>
-		<property name="username" value="${jdbc.mySqlUser}"/>
-		<property name="password" value="${jdbc.mySqlPwd}"/>
+	<bean id="oradmds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.oraDriver}" />
+		<property name="url" value="${jdbc.oraUrl}" />
+		<property name="username" value="${jdbc.oraUser}" />
+		<property name="password" value="${jdbc.oraPwd}" />
 	</bean>
-	
-	<!-- 	DAO class cfg -->
+
+	<!-- DataSource cfg -->
+	<bean id="mysqldmds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.mySqlDriver}" />
+		<property name="url" value="${jdbc.mySqlUrl}" />
+		<property name="username" value="${jdbc.mySqlUser}" />
+		<property name="password" value="${jdbc.mySqlPwd}" />
+	</bean>
+
+	<!-- DAO class cfg -->
 	<bean id="oraCustDAO" class="com.kk.dao.CustomerOracleDAOImpl">
-		<constructor-arg name="ds" ref="oradmds"/>
+		<constructor-arg name="ds" ref="oradmds" />
 	</bean>
-	
-	<!-- 	DAO class cfg -->
+
+	<!-- DAO class cfg -->
 	<bean id="mysqlCustDAO" class="com.kk.dao.CustomerMySqlDAOImpl">
-		<constructor-arg name="ds" ref="mysqldmds"/>
+		<property name="osname" value="${os.version}" />
+		<property name="username" value="${user.name}" />
+		<property name="pathdata" value="${Path}" />
+		<constructor-arg name="ds" ref="mysqldmds" />
 	</bean>
 
 	<!-- Service class cfg -->
 	<bean id="custService" class="com.kk.service.CustomerServiceImpl">
-<!-- 		<constructor-arg name="dao" ref="oraCustDAO"/> -->
-			<constructor-arg name="dao" ref="mysqlCustDAO"/>
+		<!-- <constructor-arg name="dao" ref="oraCustDAO"/> -->
+		<constructor-arg name="dao" ref="mysqlCustDAO" />
 	</bean>
-	
-<!-- 	Controller class cfg -->
+
+	<!-- Controller class cfg -->
 	<bean id="controller" class="com.kk.controller.MainController">
-		<constructor-arg name="service" ref="custService"/>
+		<constructor-arg name="service" ref="custService" />
 	</bean>
-	
-	<context:property-placeholder location="com/kk/commons/jdbc.properties"/>
+
+	<context:property-placeholder
+		location="com/kk/commons/jdbc.properties,com/kk/commons/jdbc1.properties" />
 </beans>
