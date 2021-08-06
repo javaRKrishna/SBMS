@@ -5,10 +5,10 @@ emp:
     name: Krishna
     
 #Array type properties
-    nick-names:
-    - Ankit
-    - Ansh
-    - RK
+    nick-names: [Ankit,Ansh,RK]
+   # - Ankit
+   # - Ansh
+  #  - RK
     
 #List Type properties
     team-mem:
