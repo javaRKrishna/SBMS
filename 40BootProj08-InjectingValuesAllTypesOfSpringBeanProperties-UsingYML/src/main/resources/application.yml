@@ -1,0 +1,39 @@
+#simple properties
+emp:
+  info:
+    id: 1431
+    name: Krishna
+    
+#Array type properties
+    nick-names:
+    - Ankit
+    - Ansh
+    - RK
+    
+#List Type properties
+    team-mem:
+    - Krishna Jha
+    - Charan
+    - Harish
+    
+#Set type properties
+    phone-no:
+    - 9770199232
+    - 7697865544
+    
+#Map type properties
+    id-details:
+      aadharNo: 810687026445
+      panNo: DYYPR7667K
+      
+#Has-A properties
+    comp-details:
+      location: Hyd
+      size: 200
+      title: iVIS
+    
+    
+    
+    
+    
+    
