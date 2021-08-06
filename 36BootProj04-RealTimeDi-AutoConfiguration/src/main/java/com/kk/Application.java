@@ -6,13 +6,17 @@ import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.kk.controller.MainController;
 import com.kk.vo.EmployeeVO;
 
-@SpringBootApplication
+//To disbale autoConfiguration
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,JdbcTemplateAutoConfiguration.class})
+//@SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {

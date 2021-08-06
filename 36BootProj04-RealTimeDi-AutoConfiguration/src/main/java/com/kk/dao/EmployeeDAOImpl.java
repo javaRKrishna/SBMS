@@ -22,6 +22,7 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 	
 	@Override
 	public List<EmployeeBO> getEmpByDesg(String cond) throws Exception {
+		System.out.println("Data Source->>>>"+ds.getClass());
 		List<EmployeeBO> listBO=null;
 		try(
 			//get pooled jdbc con
